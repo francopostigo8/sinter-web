@@ -41,7 +41,7 @@
       top: 0;
       z-index: 50;
       backdrop-filter: blur(12px);
-      background: rgba(255,255,255,0.9);
+      background: rgba(255,255,255,0.92);
       border-bottom: 1px solid rgba(148,163,184,.25);
       box-shadow: 0 4px 16px rgba(15,23,42,.12);
     }
@@ -219,73 +219,89 @@
       padding: 16px 18px 14px;
       border: 1px solid var(--border);
       box-shadow: 0 10px 30px rgba(15,23,42,.06);
-      transition: transform .2s, box-shadow .2s;
-    }
-    .service-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 14px 40px rgba(15,23,42,.12);
+      transition: transform .2s, box-shadow .2s, border-color .2s;
     }
     .service-title {
       margin: 0 0 6px;
       font-size: 15px;
       font-weight: 700;
       color: #111827;
+      transition: color .2s;
     }
     .service-text {
       margin: 0;
       font-size: 14px;
       color: var(--text-muted);
     }
-
-    /* GALLERY */
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 18px;
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 40px rgba(15,23,42,.16);
+      border-color: var(--red);
     }
-    .gallery-item {
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: 0 16px 40px rgba(15,23,42,.18);
-      border: 1px solid rgba(15,23,42,.25);
-      background: #020617;
-    }
-    .gallery-item img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      transition: transform .35s ease;
-    }
-    .gallery-item:hover img {
-      transform: scale(1.03);
-    }
-    .gallery-caption {
-      padding: 10px 14px 12px;
-      font-size: 13px;
-      color: #e5e7eb;
+    .service-card:hover .service-title {
+      color: var(--blue-main);
     }
 
-    /* ABOUT */
+    /* ABOUT + GALLERY en dos columnas */
     .about-wrap {
       background: var(--bg);
     }
+    .about-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr);
+      gap: 26px;
+      align-items: flex-start;
+    }
+    .about-block h2 {
+      margin: 0 0 10px;
+      font-size: 24px;
+    }
     .about-card {
-      background: #0b2447;
-      color: #e5e7eb;
+      background: #ffffff;
+      color: var(--text-main);
       border-radius: var(--radius);
-      padding: 20px 22px 18px;
+      padding: 18px 22px 18px;
       box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(148,163,184,.4);
     }
     .about-card ul {
-      margin: 10px 0 0;
+      margin: 8px 0 0;
       padding-left: 18px;
       font-size: 14px;
+      color: var(--text-muted);
     }
     .about-card li {
       margin-bottom: 6px;
     }
 
-    /* CONTACT */
+    .gallery-block h2 {
+      margin: 0 0 10px;
+      font-size: 24px;
+    }
+    .gallery-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .gallery-thumb {
+      width: 110px;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(15,23,42,.2);
+      border: 1px solid rgba(148,163,184,.6);
+      background: #020617;
+    }
+    .gallery-thumb img {
+      width: 100%;
+      height: 80px;
+      object-fit: cover;
+      transition: transform .3s ease;
+    }
+    .gallery-thumb:hover img {
+      transform: scale(1.05);
+    }
+
+    /* CONTACTO */
     .contact-grid {
       display: grid;
       grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
@@ -295,19 +311,45 @@
     .contact-card {
       background: var(--card);
       border-radius: var(--radius);
-      padding: 18px 18px 16px;
+      padding: 22px 22px 20px;
       border: 1px solid var(--border);
       box-shadow: 0 12px 35px rgba(15,23,42,.1);
       font-size: 14px;
+    }
+    .contact-card label {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 4px;
       color: var(--text-muted);
     }
-    .contact-card strong {
-      color: var(--text-main);
+    .contact-card input,
+    .contact-card textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      font-family: inherit;
+      font-size: 14px;
+      margin-bottom: 12px;
     }
-    .contact-card a {
-      color: var(--blue-main);
-      text-decoration: underline;
+    .contact-card textarea {
+      min-height: 120px;
+      resize: vertical;
     }
+    .btn-form {
+      margin-top: 4px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: none;
+      background: #0b2447;
+      color: #f9fafb;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn-form:hover {
+      background: #102a64;
+    }
+
     .map-card {
       border-radius: var(--radius);
       overflow: hidden;
@@ -321,12 +363,67 @@
       display: block;
     }
 
+    /* CTA FINAL */
+    .cta-final {
+      background: #ffffff;
+      padding: 40px 0 36px;
+      border-top: 1px solid rgba(148,163,184,.35);
+    }
+    .cta-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .cta-inner h3 {
+      margin: 0 0 4px;
+      font-size: 22px;
+    }
+    .cta-inner p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .btn-ghost {
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #ffffff;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .btn-ghost:hover {
+      background: #f9fafb;
+    }
+
     /* FOOTER */
     footer {
       border-top: 1px solid rgba(148,163,184,.4);
-      padding: 18px 0 20px;
+      padding: 16px 0 18px;
       font-size: 13px;
       color: #64748b;
+    }
+    .footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .footer-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      text-decoration: underline;
     }
 
     /* FLOAT WHATSAPP */
@@ -356,6 +453,9 @@
       .contact-grid {
         grid-template-columns: minmax(0, 1fr);
       }
+      .about-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
     }
     @media (max-width: 720px) {
       .nav-links {
@@ -369,12 +469,11 @@
 <header>
   <div class="container nav">
     <div class="nav-logo">
-      <!-- Usa tu logo sin fondo con este nombre -->
+      <!-- logo sin fondo -->
       <img src="logo-sinter.png" alt="SINTER Logo">
     </div>
     <nav class="nav-links">
       <a href="#servicios" data-i18n="nav.services">Servicios</a>
-      <a href="#galeria" data-i18n="nav.gallery">Galería</a>
       <a href="#nosotros" data-i18n="nav.about">Nosotros</a>
       <a href="#contacto" data-i18n="nav.contact">Contacto</a>
     </nav>
@@ -395,8 +494,8 @@
         <span class="chip" data-i18n="hero.badge2">Garantía oficial</span>
         <span class="chip" data-i18n="hero.badge3">Respuesta rápida</span>
       </div>
-      <h1 id="hero-title" data-i18n="hero.title">Sistemas de aire acondicionado y calefacción</h1>
-      <p id="hero-sub" data-i18n="hero.subtitle">Instalación, mantenimiento y reparación para hogares y negocios en la Costa Blanca.</p>
+      <h1 data-i18n="hero.title">Sistemas de aire acondicionado y calefacción</h1>
+      <p data-i18n="hero.subtitle">Instalación, mantenimiento y reparación para hogares y negocios en la Costa Blanca.</p>
       <div class="hero-ctas">
         <a href="#contacto" class="btn btn-primary" data-i18n="cta.primary">Pide presupuesto</a>
         <a href="tel:+34672938817" class="btn btn-secondary" data-i18n="cta.secondary">Llámanos</a>
@@ -407,8 +506,8 @@
     </div>
     <div class="hero-card">
       <div class="hero-image">
-        <!-- Foto del técnico con compresores -->
-        <img src="foto-compresor.jpg" alt="Técnico revisando unidades exteriores">
+        <!-- técnico con compresores -->
+        <img src="foto-compresor.png" alt="Técnico revisando unidades exteriores">
       </div>
     </div>
   </div>
@@ -450,44 +549,35 @@
     </div>
   </section>
 
-  <!-- GALERÍA -->
-  <section id="galeria">
-    <div class="container">
-      <h2 class="section-title" data-i18n="gallery.title">Galería</h2>
-      <p class="section-sub" data-i18n="gallery.lead">Algunos ejemplos de trabajos y equipos que instalamos.</p>
-
-      <div class="gallery-grid">
-        <figure class="gallery-item">
-          <!-- Foto del split de aire -->
-          <img src="foto-aire.png" alt="Unidad interior de aire acondicionado">
-          <figcaption class="gallery-caption" data-i18n="gallery.g1">Unidades interiores de aire acondicionado tipo split.</figcaption>
-        </figure>
-        <figure class="gallery-item">
-          <!-- Foto del técnico con compresores -->
-          <img src="foto-compresor.png" alt="Mantenimiento de unidades exteriores">
-          <figcaption class="gallery-caption" data-i18n="gallery.g2">Mantenimiento de unidades exteriores y equipos industriales.</figcaption>
-        </figure>
-        <figure class="gallery-item">
-          <!-- Foto de la estufa -->
-          <img src="foto-estufa.png" alt="Estufa de leña y pellet instalada en vivienda">
-          <figcaption class="gallery-caption" data-i18n="gallery.g3">Instalación de estufas de leña y pellet para tu hogar.</figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <!-- NOSOTROS -->
+  <!-- POR QUÉ ELEGIRNOS + GALERÍA -->
   <section id="nosotros" class="about-wrap">
     <div class="container">
-      <h2 class="section-title" data-i18n="about.title">¿Por qué elegirnos?</h2>
-      <p class="section-sub" data-i18n="about.lead">Nos encargamos de que tu instalación funcione bien desde el primer día.</p>
-      <div class="about-card">
-        <ul>
-          <li data-i18n="about.li1">Trabajo limpio y ordenado en cada instalación.</li>
-          <li data-i18n="about.li2">Atención cercana y tiempos de respuesta rápidos.</li>
-          <li data-i18n="about.li3">Experiencia en instalaciones residenciales y comerciales.</li>
-          <li data-i18n="about.li4">Seriedad y responsabilidad.</li>
-        </ul>
+      <div class="about-layout">
+        <div class="about-block">
+          <h2 data-i18n="about.title">Por qué elegirnos</h2>
+          <div class="about-card">
+            <ul>
+              <li data-i18n="about.li1">Atención cercana y tiempos de respuesta rápidos.</li>
+              <li data-i18n="about.li2">Trabajo limpio, ordenado y con garantías oficiales.</li>
+              <li data-i18n="about.li3">Experiencia en instalaciones residenciales y comerciales.</li>
+              <li data-i18n="about.li4">Seriedad y responsabilidad.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="gallery-block">
+          <h2 data-i18n="gallery.title">Galería</h2>
+          <div class="gallery-row">
+            <div class="gallery-thumb">
+              <img src="foto-estufa.png" alt="Estufa de leña y pellet">
+            </div>
+            <div class="gallery-thumb">
+              <img src="foto-compresor.png" alt="Mantenimiento de unidades exteriores">
+            </div>
+            <div class="gallery-thumb">
+              <img src="foto-aire.png" alt="Unidad interior de aire acondicionado">
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -496,16 +586,22 @@
   <section id="contacto">
     <div class="container">
       <h2 class="section-title" data-i18n="contact.title">Contacto</h2>
-      <p class="section-sub" data-i18n="contact.lead">Cuéntanos qué necesitas y te responderemos lo antes posible.</p>
+      <p class="section-sub" data-i18n="contact.lead">Cuéntanos qué necesitas y te responderemos enseguida.</p>
 
       <div class="contact-grid">
         <div class="contact-card">
-          <p><strong>SINTER – Instalaciones Térmicas</strong></p>
-          <p>03509 – Finestrat, Alicante</p>
-          <p><strong>Tel:</strong> <a href="tel:+34672938817">672 938 817</a></p>
-          <p><strong>Email:</strong> <a href="mailto:sinterclima@gmail.com">sinterclima@gmail.com</a></p>
-          <p><strong>WhatsApp:</strong> <a href="https://wa.me/34672938817" target="_blank">Escríbenos por WhatsApp</a></p>
-          <p data-i18n="contact.note">Trabajamos en Finestrat, Benidorm y alrededores de la Costa Blanca.</p>
+          <form onsubmit="event.preventDefault(); alert('Gracias por tu mensaje. Te contactaremos en breve.');">
+            <label for="nombre" data-i18n="contact.form.name">Nombre</label>
+            <input id="nombre" type="text" />
+
+            <label for="telefono" data-i18n="contact.form.phone">Teléfono</label>
+            <input id="telefono" type="tel" />
+
+            <label for="mensaje" data-i18n="contact.form.message">Mensaje</label>
+            <textarea id="mensaje"></textarea>
+
+            <button type="submit" class="btn-form" data-i18n="contact.form.send">Enviar consulta</button>
+          </form>
         </div>
         <div class="map-card">
           <iframe
@@ -518,9 +614,30 @@
   </section>
 </main>
 
-<footer>
+<!-- CTA FINAL -->
+<section class="cta-final">
   <div class="container">
-    © <span id="year"></span> SINTER. <span data-i18n="footer.rights">Todos los derechos reservados.</span>
+    <div class="cta-inner">
+      <div>
+        <h3 data-i18n="cta2.title">¿Listo para mejorar tu confort y ahorrar energía?</h3>
+        <p data-i18n="cta2.text">Te asesoramos sin compromiso.</p>
+      </div>
+      <div class="cta-buttons">
+        <a href="#contacto" class="btn btn-primary" style="box-shadow:none;" data-i18n="cta.primary">Pide presupuesto</a>
+        <a href="mailto:sinterclima@gmail.com" class="btn-ghost">Email</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-row">
+    <div>© <span id="year"></span> SINTER. <span data-i18n="footer.rights">Todos los derechos reservados.</span></div>
+    <div class="footer-links">
+      <a href="#" data-i18n="footer.legal">Aviso legal</a>
+      <a href="#" data-i18n="footer.privacy">Política de privacidad</a>
+      <a href="#" data-i18n="footer.cookies">Cookies</a>
+    </div>
   </div>
 </footer>
 
@@ -530,7 +647,6 @@
   const translations = {
     es: {
       "nav.services": "Servicios",
-      "nav.gallery": "Galería",
       "nav.about": "Nosotros",
       "nav.contact": "Contacto",
       "hero.badge1": "Empresa instaladora habilitada",
@@ -552,25 +668,27 @@
       "services.s4.text": "Montaje profesional de estufas, chimeneas y hogares.",
       "services.s5.title": "Climatización comercial",
       "services.s5.text": "Locales, oficinas y hostelería con respuesta ágil.",
-      "gallery.title": "Galería",
-      "gallery.lead": "Algunos ejemplos de trabajos y equipos que instalamos.",
-      "gallery.g1": "Unidades interiores de aire acondicionado tipo split.",
-      "gallery.g2": "Mantenimiento de unidades exteriores y equipos industriales.",
-      "gallery.g3": "Instalación de estufas de leña y pellet para tu hogar.",
-      "about.title": "¿Por qué elegirnos?",
-      "about.lead": "Nos encargamos de que tu instalación funcione bien desde el primer día.",
-      "about.li1": "Trabajo limpio y ordenado en cada instalación.",
-      "about.li2": "Atención cercana y tiempos de respuesta rápidos.",
+      "about.title": "Por qué elegirnos",
+      "about.li1": "Atención cercana y tiempos de respuesta rápidos.",
+      "about.li2": "Trabajo limpio, ordenado y con garantías oficiales.",
       "about.li3": "Experiencia en instalaciones residenciales y comerciales.",
       "about.li4": "Seriedad y responsabilidad.",
+      "gallery.title": "Galería",
       "contact.title": "Contacto",
-      "contact.lead": "Cuéntanos qué necesitas y te responderemos lo antes posible.",
-      "contact.note": "Trabajamos en Finestrat, Benidorm y alrededores de la Costa Blanca.",
-      "footer.rights": "Todos los derechos reservados."
+      "contact.lead": "Cuéntanos qué necesitas y te responderemos enseguida.",
+      "contact.form.name": "Nombre",
+      "contact.form.phone": "Teléfono",
+      "contact.form.message": "Mensaje",
+      "contact.form.send": "Enviar consulta",
+      "cta2.title": "¿Listo para mejorar tu confort y ahorrar energía?",
+      "cta2.text": "Te asesoramos sin compromiso.",
+      "footer.rights": "Todos los derechos reservados.",
+      "footer.legal": "Aviso legal",
+      "footer.privacy": "Política de privacidad",
+      "footer.cookies": "Cookies"
     },
     en: {
       "nav.services": "Services",
-      "nav.gallery": "Gallery",
       "nav.about": "About",
       "nav.contact": "Contact",
       "hero.badge1": "Certified installer",
@@ -592,21 +710,24 @@
       "services.s4.text": "Professional installation of stoves, fireplaces and hearths.",
       "services.s5.title": "Commercial HVAC",
       "services.s5.text": "Solutions for shops, offices and hospitality with agile support.",
-      "gallery.title": "Gallery",
-      "gallery.lead": "Some examples of work and equipment we install.",
-      "gallery.g1": "Indoor split air conditioning units.",
-      "gallery.g2": "Maintenance of outdoor units and industrial equipment.",
-      "gallery.g3": "Wood and pellet stoves installed in homes.",
-      "about.title": "Why choose us?",
-      "about.lead": "We make sure your installation works well from day one.",
-      "about.li1": "Clean and tidy work on every installation.",
-      "about.li2": "Friendly service and fast response times.",
-      "about.li3": "Experience in residential and commercial projects.",
+      "about.title": "Why choose us",
+      "about.li1": "Friendly service and fast response times.",
+      "about.li2": "Clean and tidy work with official warranties.",
+      "about.li3": "Experience in residential and commercial installations.",
       "about.li4": "Reliability and responsibility.",
+      "gallery.title": "Gallery",
       "contact.title": "Contact",
-      "contact.lead": "Tell us what you need and we will get back to you as soon as possible.",
-      "contact.note": "We work in Finestrat, Benidorm and the surrounding Costa Blanca area.",
-      "footer.rights": "All rights reserved."
+      "contact.lead": "Tell us what you need and we will reply quickly.",
+      "contact.form.name": "Name",
+      "contact.form.phone": "Phone",
+      "contact.form.message": "Message",
+      "contact.form.send": "Send inquiry",
+      "cta2.title": "Ready to improve comfort and save energy?",
+      "cta2.text": "We’ll advise you with no obligation.",
+      "footer.rights": "All rights reserved.",
+      "footer.legal": "Legal notice",
+      "footer.privacy": "Privacy policy",
+      "footer.cookies": "Cookies"
     }
   };
 
@@ -635,4 +756,3 @@
 
 </body>
 </html>
-
