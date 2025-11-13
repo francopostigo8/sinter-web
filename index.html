@@ -583,13 +583,10 @@
 
       <div class="contact-grid">
         <div class="contact-card">
-          <form action="https://formsubmit.co/sinterclima@gmail.com" method="POST">
+          <form action="https://formsubmit.co/sinterclima@gmail.com" method="POST" target="_blank">
   <!-- Opciones ocultas -->
   <input type="hidden" name="_subject" value="Nueva consulta desde la web SINTER">
   <input type="hidden" name="_captcha" value="false">
-
-  <!-- Cuando envíen el formulario, volverá a tu nueva web -->
-  <input type="hidden" name="_next" value="https://sinterclima.github.io/#contacto">
 
   <label for="nombre">Nombre</label>
   <input type="text" id="nombre" name="nombre" required>
@@ -603,8 +600,9 @@
   <label for="mensaje">Mensaje</label>
   <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
 
-  <button type="submit">Enviar consulta</button>
+  <button type="submit" class="btn-form">Enviar consulta</button>
 </form>
+
 
         </div>
         <div class="map-card">
@@ -760,5 +758,6 @@
 
 </body>
 </html>
+
 
 
