@@ -755,9 +755,14 @@
     document.getElementById("langToggle").textContent = lang === "es" ? "EN" : "ES";
   }
 
-  document.getElementById("langToggle").addEventListener("click", () => {
-    applyLang(currentLang === "es" ? "en" : "es");
-  });
+  document.getElementById("langEs").addEventListener("click", () => {
+  applyLang("es");
+});
+
+document.getElementById("langEn").addEventListener("click", () => {
+  applyLang("en");
+});
+
 
   document.getElementById("year").textContent = new Date().getFullYear();
   applyLang("es");
@@ -765,6 +770,7 @@
 
 </body>
 </html>
+
 
 
 
